@@ -5,7 +5,7 @@ import {
   createRootRoute,
 } from "@tanstack/react-router";
 import IndexPage from "./pages/IndexPage";
-import UsersPage from "./pages/UsersPage";
+import UsersPage from "./pages/users/UsersPage";
 import { Outlet } from "@tanstack/react-router";
 
 // 1) 루트 라우트 (Outlet처럼 자식이 들어올 자리)
