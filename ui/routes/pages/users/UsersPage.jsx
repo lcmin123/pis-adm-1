@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import Header from "../../components/header";
+import Header from "../../../components/layout/header";
 
 export default function UsersPage() {
   const [users, setUsers] = useState([]);

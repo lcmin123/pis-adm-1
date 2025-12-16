@@ -1,5 +1,5 @@
 import { router } from "../router";
-import Header from "../../components/header";
+import Header from "../../components/layout/header";
 
 export default function IndexPage() {
   return (
