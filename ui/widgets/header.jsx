@@ -1,4 +1,4 @@
-import { router } from '../../routes/router';
+import { router } from '@app/router';
 
 export default function Header() {
   return (

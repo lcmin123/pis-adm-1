@@ -13,15 +13,19 @@ export default defineConfig({
     }),
     tailwindcss()
   ],
+  envDir: '../',
+  build: {
+    emptyOutDir: true
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname),
-      '@components': path.resolve(__dirname, 'components'),
-      '@providers': path.resolve(__dirname, 'providers'),
-      '@routes': path.resolve(__dirname, 'routes'),
-      '@shared': path.resolve(__dirname, 'shared'),
-      '@stores': path.resolve(__dirname, 'stores'),
-      '@utils': path.resolve(__dirname, 'utils')
+      '@app': path.resolve(__dirname, 'app'),
+      '@pages': path.resolve(__dirname, 'pages'),
+      '@widgets': path.resolve(__dirname, 'widgets'),
+      '@features': path.resolve(__dirname, 'features'),
+      '@entities': path.resolve(__dirname, 'entities'),
+      '@shared': path.resolve(__dirname, 'shared')
     }
   }
 });

@@ -1,5 +1,5 @@
-import { router } from '@routes/router';
-import Header from '@components/layout/header';
+import { router } from '@app/router';
+import Header from '@widgets/header';
 
 export default function IndexPage() {
   return (
