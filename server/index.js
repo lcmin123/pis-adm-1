@@ -1,19 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-const db = require("./db/db.js");
+const express = require('express');
+const cors = require('cors');
+const db = require('./db/db.js');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 app.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: process.env.ORIGIN_URL
   })
 );
 app.use(express.json());
 
-const userRouter = require("./routes/user");
-app.use("/api", userRouter);
+const userRouter = require('./routes/user');
+app.use('/api', userRouter);
 
 // app.post("/api/users", (req, res) => {
 //   const { name } = req.body;
@@ -24,5 +24,5 @@ app.use("/api", userRouter);
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running on port ${process.env.PORT || 4000}`);
-  console.log("db", db);
+  console.log('db', db);
 });
