@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { router } from "../../routes/router";
+import { router } from '../../routes/router';
 
 export default function Header() {
   return (
@@ -12,7 +11,7 @@ export default function Header() {
         <div class="header__nav">
           <ul>
             <li>
-              <button onClick={() => router.navigate({ to: "/" })}>홈</button>
+              <button onClick={() => router.navigate({ to: '/' })}>홈</button>
             </li>
             <li>
               <a href="#">시스템관리</a>
