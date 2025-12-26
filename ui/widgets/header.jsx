@@ -3,12 +3,12 @@ import { router } from '@app/router';
 export default function Header() {
   return (
     <header>
-      <nav class="header">
-        <div class="header_left">
-          <i class="fa-regular fa-house"></i>
+      <nav className="header">
+        <div className="header_left">
+          <i className="fa-regular fa-house"></i>
           <h1>경기인관리시스템</h1>
         </div>
-        <div class="header__nav">
+        <div className="header__nav">
           <ul>
             <li>
               <button onClick={() => router.navigate({ to: '/' })}>홈</button>
@@ -24,7 +24,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div class="header_right">
+        <div className="header_right">
           <div>화면 도움말</div>
           <div>| 화면 ID |</div>
           <div>체육정보시스템</div>
