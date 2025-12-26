@@ -16,7 +16,7 @@ app.use(express.json());
 const userRouter = require('./routes/user');
 app.use('/api', userRouter);
 
-app.listen(process.env.API_PORT || 4000, () => {
-  console.log(`Server is running on port ${process.env.API_PORT || 4000}`);
+app.listen(process.env.PORT || 4000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 4000}`);
   console.log('db', db);
 });

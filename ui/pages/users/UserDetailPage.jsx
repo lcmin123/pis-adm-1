@@ -1,10 +1,11 @@
 import Header from "@widgets/header";
 import { useParams } from "@tanstack/react-router";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClient from "@shared/api/axiosInstance";
 
 export default function UserDetailPage() {
-		const API_BASE_URL = import.meta.env.VITE_API_URL;
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+    const queryClient = useQueryClient();
 
     const { id } = useParams({ from: "/userInfo/$id" });
     const { data, isLoading, error } = useQuery({
