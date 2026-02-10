@@ -1,6 +1,38 @@
 import { ChevronDownIcon, ChevronUpIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { Link } from '@tanstack/react-router';
-import { useState } from 'react';
+import { memo, useCallback, useState } from 'react';
+
+const SidebarGroup = memo(({ group, isOpen, onToggle }) => {
+  return (
+    <li>
+      <div
+        className="flex cursor-pointer items-center justify-between text-[1.1rem] font-bold text-gray-800"
+        onClick={() => onToggle(group.title)}
+      >
+        <span>{group.title}</span>
+        {isOpen ? (
+          <ChevronUpIcon className="size-5 text-gray-500" />
+        ) : (
+          <ChevronDownIcon className="size-5 text-gray-500" />
+        )}
+      </div>
+      {isOpen && (
+        <ul className="mt-2 ml-2 space-y-2 border-l-2 border-gray-200 pl-4 font-normal text-gray-600">
+          {group.items.map((item) => (
+            <li key={item.label}>
+              <Link
+                to={item.path}
+                className="block cursor-pointer text-sm transition-all hover:font-bold hover:text-[#164194]"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+});
 
 export default function Sidebar({ menuData }) {
   // Initialize all groups as open by default, or you can start closed.
@@ -13,12 +45,12 @@ export default function Sidebar({ menuData }) {
     return initial;
   });
 
-  const toggleGroup = (title) => {
+  const toggleGroup = useCallback((title) => {
     setOpenGroups((prev) => ({
       ...prev,
       [title]: !prev[title],
     }));
-  };
+  }, []);
 
   return (
     <aside className="h-full w-[250px] min-w-[250px] border-r border-gray-300 bg-[#f6f6f6]">
@@ -32,33 +64,7 @@ export default function Sidebar({ menuData }) {
       <nav className="p-5">
         <ul className="space-y-6">
           {menuData.map((group) => (
-            <li key={group.title}>
-              <div
-                className="flex cursor-pointer items-center justify-between text-[1.1rem] font-bold text-gray-800"
-                onClick={() => toggleGroup(group.title)}
-              >
-                <span>{group.title}</span>
-                {openGroups[group.title] ? (
-                  <ChevronUpIcon className="size-5 text-gray-500" />
-                ) : (
-                  <ChevronDownIcon className="size-5 text-gray-500" />
-                )}
-              </div>
-              {openGroups[group.title] && (
-                <ul className="mt-2 ml-2 space-y-2 border-l-2 border-gray-200 pl-4 font-normal text-gray-600">
-                  {group.items.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        to={item.path}
-                        className="block cursor-pointer text-sm transition-all hover:font-bold hover:text-[#164194]"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
+            <SidebarGroup key={group.title} group={group} isOpen={!!openGroups[group.title]} onToggle={toggleGroup} />
           ))}
         </ul>
       </nav>

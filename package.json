@@ -17,7 +17,7 @@
     "start": "electron .",
     "start-electron": "wait-on http://localhost:5173 && electron .",
     "start-react": "vite",
-    "start-node": "nodemon server/index.mjs",
+    "start-node": "nodemon --inspect server/index.mjs",
     "build:react": "vite build",
     "build:app": "electron-builder"
   },
